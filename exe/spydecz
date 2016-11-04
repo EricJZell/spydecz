@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'spydecz'
+require 'optparse'
+
+options = {}
+
+option_parser = OptionParser.new do |opts|
+  executable_name = File.basename($PROGRAM_NAME)
+  opts.banner = "
+    Spydecz makes it simple to compile and analyze data about your
+    competitors
+
+    Usage: #{executable_name} [options] page_url
+  "
+
+  opts.on('-a', '--author', 'Spy on the name of the page author') do
+    options[:author] = true
+  end
+
+  opts.on('-t', '--title', 'Spy on the title of the page') do
+    options[:title] = true
+  end
+
+  opts.on('-k', '--keywords', 'Spy on the keywords for the page') do
+    options[:keywords] = true
+  end
+
+  opts.on('-d', '--desc', 'Spy on the description of the page') do
+    options[:desc] = true
+  end
+
+  opts.on('-c', '--canonical', 'Spy on the canonical link') do
+    options[:canonical] = true
+  end
+
+  opts.on('--all', 'Spy on every metadata at once') do
+    options[:all] = true
+  end
+end
+
+begin
+  option_parser.parse!
+  rescue OptionParser::InvalidOption => error
+  puts "Spydecz doesn't recognize that #{ error }"
+  exit
+  rescue OptionParser::AmbiguousOption => error
+  puts "That's an #{ error}"
+  exit
+end
+
+if ARGV.empty?
+  puts "    error: you must specify a competitor's page_url"
+  puts option_parser.help
+else
+  page_url = ARGV[0]
+  if page_url.match(/https?:\/\/[\S]+/)
+    com_page = Spydecz::Website.new(page_url)
+    puts com_page.author if options[:author]
+    puts com_page.title if options[:title]
+    puts com_page.keywords if options[:keywords]
+    puts com_page.desc if options[:desc]
+    puts com_page.canonical if options[:canonical]
+    puts com_page.all if options[:all]
+  else
+    puts "You did not enter a valid website address"
+  end
+end

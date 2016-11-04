@@ -1,8 +1,18 @@
 # Spydecz
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spydecz`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Usage
 
-TODO: Delete this and the text above, and describe your gem
+com_page = Spydec::Website.new(page_url)
+
+#Creates a Spydec object to use for competitive analysis
+
+com_page#author		#Returns the name of the author for the page
+com_page#title		#Returns the the full title of the page
+com_page#keywords	#Returns a list of keywords for the page
+com_page#desc		#Returns the description for the page
+com_page#canonical	#Returns the canonical website for a page
+com_page#all		#Returns every metadata for the page
+
 
 ## Installation
 
@@ -32,10 +42,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/spydecz. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ericjzell/spydecz. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
