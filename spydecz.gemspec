@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Zell"]
   spec.email         = ["ezell@rbmtechnologies.com"]
 
-  spec.summary       = %q{Perform competitive analysis for your business blog.}
-  spec.description   = %q{Spydecz makes it simple to compile and analyze information about your market/industry.}
+  spec.summary       = %q{Perform (mock) competitive analysis for your business blog.}
+  spec.description   = %q{Spydecz  is a command line gem example that makes it simple to compile and analyze mock information about your market/industry.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
